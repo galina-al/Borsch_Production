@@ -3,7 +3,7 @@
 
 Язык реализации: Swift.  
 
-Технологии:  ARKit framework, Core ML. 
+Технологии:  AV foundation. 
 
 Среда разработки: Xcode 9.2 .
 

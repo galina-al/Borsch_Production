@@ -3,7 +3,7 @@
 
 Язык реализации: Swift.  
 
-Технологии:  AV framework.
+Технологии:  AV foundation. 
 
 Среда разработки: Xcode 9.2 .
 

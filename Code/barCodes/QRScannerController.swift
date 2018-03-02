@@ -21,6 +21,7 @@ class QRScannerController: UIViewController {
     var qrCodeFrameView: UIView?
     var price: String = ""
     var cents: String = ""
+    var titleOfProduct: String = ""
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
                                       AVMetadataObject.ObjectType.code39Mod43,
@@ -143,7 +144,6 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func getPrice(response: String) {
-        print(response)
         let result = Array(response.characters)
         let result2 = Array(response.characters)
         for i in 136000...result.count-1 {
@@ -165,11 +165,25 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                 }
             }
         }
-        let alertPrompt = UIAlertController(title: "Open App", message: "Price : \(self.price) р, \(self.cents) коп. ", preferredStyle: .actionSheet)
+        
+        for j in 136000...result2.count-1 {
+            if (result2[j] == "." && result2[j+2] == " " && result2[j+3] == "t" && result2[j+4] == "i" && result2[j+5] == "t"  ){
+                self.titleOfProduct.append(result2[j+9])
+                for i in 1...100{
+                    if(result2[j+9+i] != "/"){
+                        self.titleOfProduct.append(result[j+i+9])
+                    }else{
+                        break
+                    }
+                }
+            }
+        }
+        let alertPrompt = UIAlertController(title: "\(self.titleOfProduct)", message: "Price : \(self.price) р, \(self.cents) коп. ", preferredStyle: .actionSheet)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             self.price = ""
             self.cents = ""
+            self.titleOfProduct = ""
             self.captureSession.startRunning()
         })
         
@@ -177,6 +191,7 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             (action) -> Void in
             self.price = ""
             self.cents = ""
+            self.titleOfProduct = ""
             self.captureSession.startRunning()
         })
         

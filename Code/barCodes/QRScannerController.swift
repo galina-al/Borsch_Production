@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Alamofire
+import SwiftHTTP
 
 class QRScannerController: UIViewController {
 
@@ -15,10 +17,10 @@ class QRScannerController: UIViewController {
     @IBOutlet var topbar: UIView!
     
     var captureSession = AVCaptureSession()
-    
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
-
+    var price: String = ""
+    var cents: String = ""
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
                                       AVMetadataObject.ObjectType.code39Mod43,
@@ -31,7 +33,7 @@ class QRScannerController: UIViewController {
                                       AVMetadataObject.ObjectType.itf14,
                                       AVMetadataObject.ObjectType.dataMatrix,
                                       AVMetadataObject.ObjectType.interleaved2of5,
-                                      AVMetadataObject.ObjectType.qr]
+                                      ]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,23 +101,18 @@ class QRScannerController: UIViewController {
         if presentedViewController != nil {
             return
         }
-        
-        let alertPrompt = UIAlertController(title: "Open App", message: "You're going to open \(decodedURL)", preferredStyle: .actionSheet)
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            
-            if let url = URL(string: decodedURL) {
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
+        captureSession.stopRunning()
+        HTTP.GET("https://e-dostavka.by/search/?searchtext=\(decodedURL)") { response in
+            if let err = response.error {
+            print("error: \(err.localizedDescription)")
+            return //also notify app of failure as needed
             }
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-        
-        alertPrompt.addAction(confirmAction)
-        alertPrompt.addAction(cancelAction)
-        
-        present(alertPrompt, animated: true, completion: nil)
+            guard var result = response.description as? String else{
+                return
+            }
+            self.getPrice(response: result)
+            //print("data is: \(response.data)") access the response of the data with response.data
+        }
     }
 
 }
@@ -145,4 +142,46 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+    func getPrice(response: String) {
+        print(response)
+        let result = Array(response.characters)
+        let result2 = Array(response.characters)
+        for i in 136000...result.count-1 {
+            if (result[i] == "c" && result[i+1] == "l" && result[i+2] == "a" && result[i+3] == "s" && result[i+4] == "s" && result[i+5] == "=" &&  result[i+7] == "p" && result[i+8] == "r" && result[i+13] == ">"){
+                price.append(result[i+14])
+                if(result[i+15] != "<"){
+                    price.append(result[i+15])
+                }
+                if(result[i+16] != "<" && result[i+16] != "b"){
+                    price.append(result[i+16])
+                }
+            }
+        }
+        for j in 136000...result2.count-1 {
+            if (result2[j] == "c" && result2[j+1] == "e" && result2[j+2] == "n" && result2[j+3] == "t" && result2[j+5] == ">"  ){
+                self.cents.append(result2[j+6])
+                if(result2[j+7] != "<"){
+                    self.cents.append(result2[j+7])
+                }
+            }
+        }
+        let alertPrompt = UIAlertController(title: "Open App", message: "Price : \(self.price) р, \(self.cents) коп. ", preferredStyle: .actionSheet)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            self.price = ""
+            self.cents = ""
+            self.captureSession.startRunning()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {
+            (action) -> Void in
+            self.price = ""
+            self.cents = ""
+            self.captureSession.startRunning()
+        })
+        
+        alertPrompt.addAction(confirmAction)
+        alertPrompt.addAction(cancelAction)
+        present(alertPrompt, animated: true, completion: nil)
+    }
 }

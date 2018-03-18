@@ -28,14 +28,16 @@
   - Управление исключениями: обеспечить стабильность состояния приложения после сбоя.
  ## To be архитектура:
  1. Диаграмма компонентов.
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ComponentDiagramToBe.PNG?raw=true)
  2. Диаграмма развертывания.
- 3. [Диаграмма классов]
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/DeploymentDiagramToBe.PNG?raw=true)
+ 3. Диаграмма классов
  
  # Часть 2
  ## As is архитектура:
  1. Диаграмма компонентов.
 
- 2. [Диаграмма классов]
+ 2. Диаграмма классов
  
  # Часть 3
   

@@ -8,3 +8,6 @@
 - "To Be"
 
 ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/DeploymentDiagramToBe.PNG?raw=true)
+## 3. Class Diagram
+- "To Be"
+![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ClassDiagram_AsIs.jpg?raw=true)

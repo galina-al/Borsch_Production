@@ -17,6 +17,6 @@
 # Содержание
   1. [Документация](Documents)  
   1.1. [Требования](Documents/Requirements/Requirements%20Document.md)  
-  1.2. [Архитектурное решение](Documents/Requirements%20ArchitectualSolution.md)  
+  1.2. [Архитектурное решение](Documents/Requirements/ArchitectualSolution.md)  
   1.3. [Диаграммы](Documents/Diagrams/README.md)  
   2. [Код](Code)  

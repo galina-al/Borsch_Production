@@ -4,6 +4,7 @@
 ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ComponentDiagramToBe.PNG?raw=true)
 - "As is"
 
+![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ComponentDiagramAsIs.PNG?raw=true)
 ## 2.	Deployment Diagram
 - "To Be"
 

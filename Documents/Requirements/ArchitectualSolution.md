@@ -36,8 +36,9 @@
  # Часть 2
  ## "As is" архитектура:
  1. Диаграмма компонентов.
-
- 2. Диаграмма классов
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ComponentDiagramAsIs.PNG?raw=true)
+ 2. Диаграмма классов.
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ClassDiagram_AsIs.jpg?raw=true)
  
  # Часть 3
   

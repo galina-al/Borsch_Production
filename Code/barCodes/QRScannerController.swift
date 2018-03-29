@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import Alamofire
 import SwiftHTTP
 
 class QRScannerController: UIViewController {

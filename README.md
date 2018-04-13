@@ -15,8 +15,10 @@
 придерживаетесь ли вы своего же плана.
 
 # Содержание
-  1. [Документация](Documents)  
-  1.1. [Требования](Documents/Requirements/Requirements%20Document.md)  
-  1.2. [Архитектурное решение](Documents/Requirements/ArchitectualSolution.md)  
-  1.3. [Диаграммы](Documents/Diagrams/README.md)  
-  2. [Код](Code)  
+1. [Документация](Documents)  
+1.1. [Требования](Documents/Requirements/Requirements%20Document.md)  
+1.2. [Архитектурное решение](Documents/Requirements/ArchitectualSolution.md)   
+1.3. [Парное программирование](Documents/Requirements/Pair_Programming.md)  
+1.4. [Технический долг](Documents/Requirements/Technical_debt.md)  
+1.5. [Диаграммы](Documents/Diagrams/README.md)
+2. [Код](Code)  

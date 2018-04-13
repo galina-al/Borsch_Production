@@ -17,7 +17,7 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
         let vc1 = sb.instantiateViewController(withIdentifier: "ItemsVC")
         let vc2 = sb.instantiateViewController(withIdentifier: "QRScannerVC")
         
-        return [vc1,vc2,vc3]
+        return [vc3,vc1,vc2]
     }()
     
     override func viewDidLoad() {
@@ -25,6 +25,7 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
         self.dataSource = self
         
         if let firstViewController = viewControllerList.first {
+            
             self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
         

@@ -9,6 +9,9 @@
 import UIKit
 import AVFoundation
 import SwiftHTTP
+import CoreData
+
+let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class QRScannerController: UIViewController {
 
@@ -142,6 +145,22 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+    func save(completion: (_ finished: Bool) -> ()) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        let item = Item(context: managedContext)
+        item.productName = self.titleOfProduct
+        item.price = self.price
+        item.cents = self.cents
+        do{
+            try managedContext.save()
+            completion(true)
+            print("saved")
+        }catch{
+            print("error")
+            completion(false)
+        }
+    }
+    
     func getPrice(response: String) {
         let result = Array(response.characters)
         let result2 = Array(response.characters)
@@ -180,9 +199,11 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         let alertPrompt = UIAlertController(title: "\(self.titleOfProduct)", message: "Price : \(self.price) р, \(self.cents) коп. ", preferredStyle: .actionSheet)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.price = ""
-            self.cents = ""
-            self.titleOfProduct = ""
+            self.save { (complete) in
+                if complete {
+                    print("saved")
+                }
+            }
             self.captureSession.startRunning()
         })
         
@@ -199,3 +220,5 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         present(alertPrompt, animated: true, completion: nil)
     }
 }
+
+

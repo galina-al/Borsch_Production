@@ -15,9 +15,9 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
         
         let vc3 = sb.instantiateViewController(withIdentifier: "PrePurchaseVC")
         let vc1 = sb.instantiateViewController(withIdentifier: "ItemsVC")
-        let vc2 = sb.instantiateViewController(withIdentifier: "QRScannerVC")
+       // let vc2 = sb.instantiateViewController(withIdentifier: "QRScannerVC")
         
-        return [vc3,vc1,vc2]
+        return [vc1,/*vc2,*/vc3]
     }()
     
     override func viewDidLoad() {
@@ -39,6 +39,7 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
         guard viewControllerList.count > previousIndex else {return nil}
         return viewControllerList[previousIndex]
     }
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         guard let vcIndex = viewControllerList.index(of: viewController) else { return nil}

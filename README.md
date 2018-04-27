@@ -20,6 +20,6 @@
 1.2. [Архитектурное решение](Documents/Requirements/ArchitectualSolution.md)   
 1.3. [Парное программирование](Documents/Requirements/Pair_Programming.md)  
 1.4. [Технический долг](Documents/Requirements/Technical_debt.md)  
-1.5. [Улучшение UX](Documents/Requirements/Upgrade_UX.md)
-1.6. [Диаграммы](Documents/Diagrams/README.md)
+1.5. [Улучшение UX](Documents/Requirements/Upgrade_UX.md)  
+1.6. [Диаграммы](Documents/Diagrams/README.md)  
 2. [Код](Code)  

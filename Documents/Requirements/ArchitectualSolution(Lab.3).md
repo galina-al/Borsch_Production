@@ -78,8 +78,8 @@
  ## "As is" архитектура:
  1. Диаграмма компонентов.
  ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ComponentDiagramAsIs.PNG?raw=true)
- 2. Диаграмма классов.
- ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/ClassDiagram_AsIs.jpg?raw=true)
+ 2. Диаграмма развертывания.
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Diagrams/DeploymentDiagramToBe.PNG?raw=true)
  
  <a name="part3"/>
  

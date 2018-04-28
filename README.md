@@ -17,7 +17,7 @@
 # Содержание
 1. [Документация](Documents)  
 1.1. [Требования](Documents/Requirements/Requirements%20Document.md)  
-1.2. [Архитектурное решение (Лаб. 3)](Documents/Requirements/ArchitectualSolution.md)   
+1.2. [Архитектурное решение (Лаб. 3)](Documents/Requirements/ArchitectualSolution(Lab.3).md)   
 1.3. [Парное программирование (Лаб. 4)](Documents/Requirements/Pair_Programming.md)  
 1.4. [Технический долг (Лаб. 5)](Documents/Requirements/Technical_debt.md)  
 1.5. [Улучшение UX (Лаб. 6)](Documents/Requirements/Upgrade_UX.md)  

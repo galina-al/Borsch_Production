@@ -54,3 +54,6 @@
 
  ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Requirements/pre-list.gif?raw=true)
 
+  2. Удаление Элементов списка, завершение покупок, просмотр общей стоимости (функционал всего приложения).
+  
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Requirements/borsch.gif?raw=true)

@@ -9,15 +9,20 @@
 import UIKit
 import CoreData
 import fluid_slider
+import TableViewReloadAnimation
 
 
-class ItemsVC: UIViewController {
+class ItemsVC: UIViewController{
+    
     
     @IBOutlet weak var arrowButton: UIButton!
     var borshViewHeight = 70
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var treshHoldSlider: Slider!
     @IBOutlet weak var borshView: UIView!
+   // @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet var welcomeView: UIView!
+    var effect: UIVisualEffect!
     let arrowDownImage = UIImage(named: "arrowDown.png")
     let arrowUpImage = UIImage(named: "arrowUp.png")
     
@@ -48,15 +53,19 @@ class ItemsVC: UIViewController {
         treshHoldSlider.contentViewColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
         treshHoldSlider.valueViewColor = .white
         treshHoldSlider.didBeginTracking = { void in
-           // print(self.treshHoldSlider.description)
         }
+        ////////////////
         treshHoldSlider.didEndTracking = { void in
            // print(self.treshHoldSlider.description)
             print(self.treshHoldSlider.fraction.description)
+           Threshold.shared.setThreshold(threshold: Double(self.treshHoldSlider.fraction.description)! * 100)
         }
+        //////
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
+    
     @IBAction func expandButtonPressed(_ sender: Any) {
         if(borshView.frame.size.height == 70){
             arrowButton.setImage(UIImage(named: "caret-arrow-up")?.withRenderingMode(.automatic), for: .normal)
@@ -72,10 +81,28 @@ class ItemsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.fetch { (complete) in
             if complete{
-                tableView.reloadData()
+                if items.count >= 1 {
+                   // welcomeUser(toWelcome: true)
+                }else{
+                    //welcomeUser(toWelcome: false)
+                }
+                tableView.reloadData(
+                    with: .simple(duration: 0.75, direction: .rotation3D(type: .spiderMan),
+                                  constantDelay: 0))
             }
         }
     }
+    
+//    func welcomeUser(toWelcome: Bool){
+//        visualEffectView.isHidden = toWelcome
+//        if(toWelcome){
+//            self.welcomeView.removeFromSuperview()
+//        }else{
+//           self.view.addSubview(welcomeView)
+//           welcomeView.center = self.view.center
+//           welcomeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+//        }
+//    }
     
 }
 
@@ -98,6 +125,18 @@ extension ItemsVC: UITableViewDelegate, UITableViewDataSource {
     {
         return 75.0
     }
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            deleteRecord(itemToDelete: self.items[indexPath.row])
+            self.items.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension ItemsVC {
@@ -110,5 +149,33 @@ extension ItemsVC {
         }catch{
             completion(false)
         }
+    }
+    func deleteRecord(itemToDelete: Item) -> Void {
+        let moc = getContext()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+        
+        let result = try? moc.fetch(fetchRequest)
+        let resultData = result as! [Item]
+        
+        for object in resultData {
+            if (object == itemToDelete){
+                 moc.delete(object)
+            }
+        }
+        
+        do {
+            try moc.save()
+            print("saved!")
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        } catch {
+            
+        }
+        
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
 }

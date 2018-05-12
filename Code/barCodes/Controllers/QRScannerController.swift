@@ -10,20 +10,24 @@ import UIKit
 import AVFoundation
 import SwiftHTTP
 import CoreData
+import Foundation
 
 let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
-class QRScannerController: UIViewController {
-
-    @IBOutlet var messageLabel:UILabel!
+class QRScannerController: UIViewController{
+    
+    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet var topbar: UIView!
     
+    @IBOutlet weak var doNotPushButton: UIButton!
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
     var price: String = ""
     var cents: String = ""
     var titleOfProduct: String = ""
+    var threshold: Double?
+    var items: [Item] = []
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
                                       AVMetadataObject.ObjectType.code39Mod43,
@@ -40,48 +44,30 @@ class QRScannerController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
         
         let captureDevice = AVCaptureDevice.default(for: .video)!
         
         do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            
-            // Set the input device on the capture session.
             captureSession.addInput(input)
-            
-            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession.addOutput(captureMetadataOutput)
-            
-            // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
-//            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
             
         } catch {
-            // If any error occurs, simply print it out and don't continue any more.
             print(error)
             return
         }
         
-        // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
-        
-        // Start video capture.
         captureSession.startRunning()
-        
-        // Move the message label and top bar to the front
-        view.bringSubview(toFront: messageLabel)
         view.bringSubview(toFront: topbar)
-        
-        // Initialize QR Code Frame to highlight the QR code
+        view.bringSubview(toFront: doNotPushButton)
         qrCodeFrameView = UIView()
         
         if let qrCodeFrameView = qrCodeFrameView {
@@ -90,14 +76,19 @@ class QRScannerController: UIViewController {
             view.addSubview(qrCodeFrameView)
             view.bringSubview(toFront: qrCodeFrameView)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-    // MARK: - Helper methods
+    override func viewWillAppear(_ animated: Bool) {
+        print(Threshold.shared.getThreshold())
+        self.threshold = Double(lroundf(Float(Threshold.shared.getThreshold())))
+        print(self.threshold!)
+        self.fetch { (complete) in
+            if complete {
+                checkForThreshold()
+            }
+        }
+    }
 
     func launchApp(decodedURL: String) {
         
@@ -108,39 +99,38 @@ class QRScannerController: UIViewController {
         HTTP.GET("https://e-dostavka.by/search/?searchtext=\(decodedURL)") { response in
             if let err = response.error {
             print("error: \(err.localizedDescription)")
-            return //also notify app of failure as needed
+            return
             }
             guard var result = response.description as? String else{
                 return
             }
             self.getPrice(response: result)
-            //print("data is: \(response.data)") access the response of the data with response.data
         }
     }
-
+    
+    @IBAction func deleteAllPressed(_ sender: Any) {
+        
+        deleteAll()
+    }
+    
+    
 }
 
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No QR code is detected"
             return
         }
-        
-        // Get the metadata object.
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
-            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
                 launchApp(decodedURL: metadataObj.stringValue!)
-                messageLabel.text = metadataObj.stringValue
             }
         }
     }
@@ -198,13 +188,44 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         }
         let alertPrompt = UIAlertController(title: "\(self.titleOfProduct)", message: "Price : \(self.price) р, \(self.cents) коп. ", preferredStyle: .actionSheet)
         
+        
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             self.save { (complete) in
                 if complete {
                     print("saved")
                 }
             }
-            self.captureSession.startRunning()
+            self.price = ""
+            self.cents = ""
+            self.titleOfProduct = ""
+            self.fetch { (complete) in
+                if complete {
+                    if (Int(self.threshold!) > Int(self.checkForThreshold())) {
+                        self.captureSession.startRunning()
+                    } else {
+                        if(self.threshold != 1.0){
+                            let outOfAlert = UIAlertController(title: "Borsh", message: "Out of threshold", preferredStyle: UIAlertControllerStyle.alert)
+                            outOfAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                                switch action.style{
+                                case .default:
+                                    self.captureSession.startRunning()
+                                    
+                                case .cancel:
+                                    print("cancel")
+                                    
+                                case .destructive:
+                                    print("destructive")
+                                    
+                                    
+                                }}))
+                            self.present(outOfAlert, animated: true, completion: nil)
+                        }else{
+                            self.captureSession.startRunning()
+                        }
+                    }
+                }
+            }
+            
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {
@@ -214,11 +235,130 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             self.titleOfProduct = ""
             self.captureSession.startRunning()
         })
+        if(self.price != "" && self.cents != ""){
+            alertPrompt.addAction(confirmAction)
+            alertPrompt.addAction(cancelAction)
+            present(alertPrompt, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "Borsh", message: "Can't find 😔", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                switch action.style{
+                case .default:
+                    self.captureSession.startRunning()
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                    
+                    
+                }}))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func fetch(completion: (_ complete:Bool) -> ()){
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+        do{
+            items =  try managedContext.fetch(fetchRequest) as! [Item]
+            completion(true)
+        }catch{
+            completion(false)
+        }
+    }
+    
+    
+    func checkForThreshold() -> Double {
+        var basket: Double = 0
+        for item in items {
+            var str = "0." + item.cents!
+            basket += Double(item.price!)! + Double(str)!
+        }
+        if(basket != 0) {
+            var str = String(basket) + "p"
+            DispatchQueue.main.async {
+                self.totalPriceLabel.text = str
+            }
+            
+        }else{
+            DispatchQueue.main.async {
+                self.totalPriceLabel.text = "0,0p"
+            }
+        }
+        return basket
+    }
+    
+    func deleteAll() {
+        
+        let alertPrompt = UIAlertController(title: "Borsh", message: "Хотите завершить покупки?", preferredStyle: .alert)
+        self.captureSession.stopRunning()
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {
+            (action) -> Void in
+            self.captureSession.startRunning()
+        })
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            self.deletePreItemRecords()
+            self.deleteItemRecords()
+            self.captureSession.startRunning()
+        })
         
         alertPrompt.addAction(confirmAction)
         alertPrompt.addAction(cancelAction)
         present(alertPrompt, animated: true, completion: nil)
+        
+        self.viewWillAppear(false)
+        
     }
+    
+    func deletePreItemRecords() -> Void {
+        let moc = getContext()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PreItem")
+        
+        let result = try? moc.fetch(fetchRequest)
+        let resultData = result as! [PreItem]
+        
+        for object in resultData {
+                moc.delete(object)
+        }
+        do {
+            try moc.save()
+            print("saved!")
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        } catch {
+            
+        }
+        
+    }
+    
+    func deleteItemRecords() -> Void {
+        let moc = getContext()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+        
+        let result = try? moc.fetch(fetchRequest)
+        let resultData = result as! [Item]
+        
+        for object in resultData {
+                moc.delete(object)
+        }
+        do {
+            try moc.save()
+            print("saved!")
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        } catch {
+            
+        }
+        
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+        
 }
-
-
+}

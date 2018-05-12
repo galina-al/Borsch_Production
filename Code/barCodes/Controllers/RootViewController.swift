@@ -12,21 +12,21 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
 
     lazy var viewControllerList: [UIViewController] = {
         let sb = UIStoryboard(name: "Main",bundle: nil)
-        
         let vc3 = sb.instantiateViewController(withIdentifier: "PrePurchaseVC")
         let vc1 = sb.instantiateViewController(withIdentifier: "ItemsVC")
-       // let vc2 = sb.instantiateViewController(withIdentifier: "QRScannerVC")
-        
-        return [vc1,/*vc2,*/vc3]
+        let vc2 = sb.instantiateViewController(withIdentifier: "QRScannerVC")
+        return [vc3,vc2,vc1]
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        
-        if let firstViewController = viewControllerList.first {
-            
+        var new = viewControllerList.dropFirst()
+        if let firstViewController = new.first  {
             self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
+        if let myView = view?.subviews.first as? UIScrollView {
+            myView.canCancelContentTouches = false
         }
         
         // Do any additional setup after loading the view.
@@ -49,5 +49,6 @@ class RootViewController: UIPageViewController, UIPageViewControllerDataSource {
         guard viewControllerList.count > nextIndex else {return nil}
         return viewControllerList[nextIndex]
     }
+    
 
 }

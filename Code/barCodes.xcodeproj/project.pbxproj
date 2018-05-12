@@ -7,33 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044C1C98206EBC950062FDE7 /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 044C1C96206EBC950062FDE7 /* ItemModel.xcdatamodeld */; };
+		045794B2207BAE6500866663 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045794B1207BAE6500866663 /* UIViewExt.swift */; };
+		045794B5207BBA2B00866663 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045794B3207BBA2B00866663 /* Main.storyboard */; };
+		045794B7207BD62100866663 /* fluid_slider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 045794B8207BD62100866663 /* fluid_slider.framework */; };
+		047FE418206EC1D2005A7391 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FE417206EC1D2005A7391 /* ItemCell.swift */; };
+		047FE41A206EC261005A7391 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047FE419206EC261005A7391 /* CoreData.framework */; };
+		04A8DFDC206EC422002EC8F6 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A8DFDD206EC422002EC8F6 /* SwiftHTTP.framework */; };
+		04AA7488207B91DA00D29475 /* Pods_barCodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04AA7489207B91DA00D29475 /* Pods_barCodes.framework */; };
+		04B92CCE20A34276002ECAD7 /* PrePurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B92CCD20A34276002ECAD7 /* PrePurchaseVC.swift */; };
+		04C0DB9020A363E300CB2F60 /* PreItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0DB8F20A363E300CB2F60 /* PreItemCell.swift */; };
+		04C0DB9320A36AF800CB2F60 /* Threshold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0DB9220A36AF800CB2F60 /* Threshold.swift */; };
 		04C51369206D6E0100839B15 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C51368206D6E0000839B15 /* RootViewController.swift */; };
 		04C5136B206D6EBE00839B15 /* ItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5136A206D6EBE00839B15 /* ItemsVC.swift */; };
 		04E159E42029BC4900AE9D1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E159E32029BC4900AE9D1A /* Assets.xcassets */; };
 		04E159F32029BD3600AE9D1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E159EF2029BD3600AE9D1A /* Info.plist */; };
 		04E159F42029BD3600AE9D1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E159F02029BD3600AE9D1A /* AppDelegate.swift */; };
-		04E159F52029BD3600AE9D1A /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E159F12029BD3600AE9D1A /* QRCodeViewController.swift */; };
 		04E159F62029BD3600AE9D1A /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E159F22029BD3600AE9D1A /* QRScannerController.swift */; };
 		04E159FB2029BD4100AE9D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E159F72029BD4100AE9D1A /* LaunchScreen.storyboard */; };
-		04E159FC2029BD4100AE9D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E159F92029BD4100AE9D1A /* Main.storyboard */; };
-		1D7D909ECB24C8C6A030A5F8 /* Pods_barCodes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C60994A02E7A6A3306E1F0D /* Pods_barCodes.framework */; };
+		04F95CFB20A65A24004877EB /* M13Checkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F95CFA20A65A24004877EB /* M13Checkbox.framework */; };
+		04F95CFD20A65A24004877EB /* TableViewReloadAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F95CFC20A65A24004877EB /* TableViewReloadAnimation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044C1C97206EBC950062FDE7 /* ItemNodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemNodel.xcdatamodel; sourceTree = "<group>"; };
+		045794B1207BAE6500866663 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		045794B4207BBA2B00866663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = barCodes/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		045794B8207BD62100866663 /* fluid_slider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = fluid_slider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		047FE417206EC1D2005A7391 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		047FE419206EC261005A7391 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		04A8DFDD206EC422002EC8F6 /* SwiftHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04AA7489207B91DA00D29475 /* Pods_barCodes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_barCodes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04B92CCD20A34276002ECAD7 /* PrePurchaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePurchaseVC.swift; sourceTree = "<group>"; };
+		04C0DB8F20A363E300CB2F60 /* PreItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreItemCell.swift; sourceTree = "<group>"; };
+		04C0DB9220A36AF800CB2F60 /* Threshold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Threshold.swift; sourceTree = "<group>"; };
 		04C51368206D6E0000839B15 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		04C5136A206D6EBE00839B15 /* ItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsVC.swift; sourceTree = "<group>"; };
 		04E159D92029BC4800AE9D1A /* barCodes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barCodes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E159E32029BC4900AE9D1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E159EE2029BD3600AE9D1A /* barCodes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "barCodes-Bridging-Header.h"; sourceTree = "<group>"; };
 		04E159EF2029BD3600AE9D1A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04E159F02029BD3600AE9D1A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04E159F12029BD3600AE9D1A /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		04E159F02029BD3600AE9D1A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = barCodes/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		04E159F22029BD3600AE9D1A /* QRScannerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
 		04E159F82029BD4100AE9D1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		04E159FA2029BD4100AE9D1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6C60994A02E7A6A3306E1F0D /* Pods_barCodes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barCodes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		817F9CD971A09AC0CF8A5450 /* Pods-barCodes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barCodes.release.xcconfig"; path = "Pods/Target Support Files/Pods-barCodes/Pods-barCodes.release.xcconfig"; sourceTree = "<group>"; };
-		CAAEAF69095309D5710AB431 /* Pods-barCodes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barCodes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barCodes/Pods-barCodes.debug.xcconfig"; sourceTree = "<group>"; };
+		04F95CFA20A65A24004877EB /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F95CFC20A65A24004877EB /* TableViewReloadAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TableViewReloadAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BC429D8C206F4AD44F93F88 /* Pods-barCodes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barCodes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-barCodes/Pods-barCodes.debug.xcconfig"; sourceTree = "<group>"; };
+		4FEC4627A90573D7A792E92C /* Pods-barCodes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barCodes.release.xcconfig"; path = "Pods/Target Support Files/Pods-barCodes/Pods-barCodes.release.xcconfig"; sourceTree = "<group>"; };
+		972AA3A52268EA63D10B72C6 /* Pods_barCodes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barCodes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,20 +62,72 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7D909ECB24C8C6A030A5F8 /* Pods_barCodes.framework in Frameworks */,
+				04F95CFB20A65A24004877EB /* M13Checkbox.framework in Frameworks */,
+				04F95CFD20A65A24004877EB /* TableViewReloadAnimation.framework in Frameworks */,
+				045794B7207BD62100866663 /* fluid_slider.framework in Frameworks */,
+				04AA7488207B91DA00D29475 /* Pods_barCodes.framework in Frameworks */,
+				047FE41A206EC261005A7391 /* CoreData.framework in Frameworks */,
+				04A8DFDC206EC422002EC8F6 /* SwiftHTTP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03CEC3BFAFE010D5604E3986 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BC429D8C206F4AD44F93F88 /* Pods-barCodes.debug.xcconfig */,
+				4FEC4627A90573D7A792E92C /* Pods-barCodes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		045794B0207BAE5300866663 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				045794B1207BAE6500866663 /* UIViewExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		047FE416206EC1BA005A7391 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				045794B3207BBA2B00866663 /* Main.storyboard */,
+				047FE417206EC1D2005A7391 /* ItemCell.swift */,
+				04C0DB8F20A363E300CB2F60 /* PreItemCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04B92CCC20A3424C002ECAD7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04C51368206D6E0000839B15 /* RootViewController.swift */,
+				04E159F22029BD3600AE9D1A /* QRScannerController.swift */,
+				04C5136A206D6EBE00839B15 /* ItemsVC.swift */,
+				04B92CCD20A34276002ECAD7 /* PrePurchaseVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		04C0DB9120A36ABB00CB2F60 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				04C0DB9220A36AF800CB2F60 /* Threshold.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		04E159D02029BC4800AE9D1A = {
 			isa = PBXGroup;
 			children = (
+				044C1C96206EBC950062FDE7 /* ItemModel.xcdatamodeld */,
 				04E159DB2029BC4800AE9D1A /* barCodes */,
 				04E159DA2029BC4800AE9D1A /* Products */,
-				AE1904F87310C79DCB91D204 /* Pods */,
 				3707AEC12A721999422C25B7 /* Frameworks */,
+				03CEC3BFAFE010D5604E3986 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,16 +142,15 @@
 		04E159DB2029BC4800AE9D1A /* barCodes */ = {
 			isa = PBXGroup;
 			children = (
+				04C0DB9120A36ABB00CB2F60 /* Classes */,
+				04B92CCC20A3424C002ECAD7 /* Controllers */,
+				045794B0207BAE5300866663 /* Extensions */,
+				047FE416206EC1BA005A7391 /* Views */,
 				04E159F72029BD4100AE9D1A /* LaunchScreen.storyboard */,
-				04E159F92029BD4100AE9D1A /* Main.storyboard */,
 				04E159F02029BD3600AE9D1A /* AppDelegate.swift */,
 				04E159EF2029BD3600AE9D1A /* Info.plist */,
-				04E159F12029BD3600AE9D1A /* QRCodeViewController.swift */,
-				04E159F22029BD3600AE9D1A /* QRScannerController.swift */,
 				04E159E32029BC4900AE9D1A /* Assets.xcassets */,
 				04E159EE2029BD3600AE9D1A /* barCodes-Bridging-Header.h */,
-				04C51368206D6E0000839B15 /* RootViewController.swift */,
-				04C5136A206D6EBE00839B15 /* ItemsVC.swift */,
 			);
 			path = barCodes;
 			sourceTree = "<group>";
@@ -86,18 +158,15 @@
 		3707AEC12A721999422C25B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6C60994A02E7A6A3306E1F0D /* Pods_barCodes.framework */,
+				04F95CFA20A65A24004877EB /* M13Checkbox.framework */,
+				04F95CFC20A65A24004877EB /* TableViewReloadAnimation.framework */,
+				045794B8207BD62100866663 /* fluid_slider.framework */,
+				04AA7489207B91DA00D29475 /* Pods_barCodes.framework */,
+				04A8DFDD206EC422002EC8F6 /* SwiftHTTP.framework */,
+				047FE419206EC261005A7391 /* CoreData.framework */,
+				972AA3A52268EA63D10B72C6 /* Pods_barCodes.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AE1904F87310C79DCB91D204 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CAAEAF69095309D5710AB431 /* Pods-barCodes.debug.xcconfig */,
-				817F9CD971A09AC0CF8A5450 /* Pods-barCodes.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,12 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04E159EB2029BC4900AE9D1A /* Build configuration list for PBXNativeTarget "barCodes" */;
 			buildPhases = (
-				4C5FAA56B28767913D068CCB /* [CP] Check Pods Manifest.lock */,
+				0D9E06196171A982718300FE /* [CP] Check Pods Manifest.lock */,
 				04E159D52029BC4800AE9D1A /* Sources */,
 				04E159D62029BC4800AE9D1A /* Frameworks */,
 				04E159D72029BC4800AE9D1A /* Resources */,
-				AADDB4ABFBFC1E6780B77FD0 /* [CP] Embed Pods Frameworks */,
-				7B94382158816919ECF3BA58 /* [CP] Copy Pods Resources */,
+				7CB64E025E810A0967668286 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,14 +234,14 @@
 				04E159FB2029BD4100AE9D1A /* LaunchScreen.storyboard in Resources */,
 				04E159F32029BD3600AE9D1A /* Info.plist in Resources */,
 				04E159E42029BC4900AE9D1A /* Assets.xcassets in Resources */,
-				04E159FC2029BD4100AE9D1A /* Main.storyboard in Resources */,
+				045794B5207BBA2B00866663 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C5FAA56B28767913D068CCB /* [CP] Check Pods Manifest.lock */ = {
+		0D9E06196171A982718300FE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -191,37 +259,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7B94382158816919ECF3BA58 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-barCodes/Pods-barCodes-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AADDB4ABFBFC1E6780B77FD0 /* [CP] Embed Pods Frameworks */ = {
+		7CB64E025E810A0967668286 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-barCodes/Pods-barCodes-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHTTP/SwiftHTTP.framework",
+				"${BUILT_PRODUCTS_DIR}/TableViewReloadAnimation/TableViewReloadAnimation.framework",
+				"${BUILT_PRODUCTS_DIR}/fluid-slider/fluid_slider.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHTTP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableViewReloadAnimation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/fluid_slider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -235,31 +292,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E159F52029BD3600AE9D1A /* QRCodeViewController.swift in Sources */,
+				044C1C98206EBC950062FDE7 /* ItemModel.xcdatamodeld in Sources */,
+				04B92CCE20A34276002ECAD7 /* PrePurchaseVC.swift in Sources */,
 				04E159F42029BD3600AE9D1A /* AppDelegate.swift in Sources */,
 				04C51369206D6E0100839B15 /* RootViewController.swift in Sources */,
+				045794B2207BAE6500866663 /* UIViewExt.swift in Sources */,
+				04C0DB9320A36AF800CB2F60 /* Threshold.swift in Sources */,
+				047FE418206EC1D2005A7391 /* ItemCell.swift in Sources */,
 				04C5136B206D6EBE00839B15 /* ItemsVC.swift in Sources */,
 				04E159F62029BD3600AE9D1A /* QRScannerController.swift in Sources */,
+				04C0DB9020A363E300CB2F60 /* PreItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		045794B3207BBA2B00866663 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				045794B4207BBA2B00866663 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		04E159F72029BD4100AE9D1A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				04E159F82029BD4100AE9D1A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		04E159F92029BD4100AE9D1A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04E159FA2029BD4100AE9D1A /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -297,7 +359,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -354,8 +417,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -374,16 +438,20 @@
 		};
 		04E159EC2029BC4900AE9D1A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CAAEAF69095309D5710AB431 /* Pods-barCodes.debug.xcconfig */;
+			baseConfigurationReference = 3BC429D8C206F4AD44F93F88 /* Pods-barCodes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CSMBE4NXW6;
 				INFOPLIST_FILE = barCodes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NG.com.barCodes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos11.3;
 				SWIFT_OBJC_BRIDGING_HEADER = "barCodes/barCodes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -393,16 +461,20 @@
 		};
 		04E159ED2029BC4900AE9D1A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 817F9CD971A09AC0CF8A5450 /* Pods-barCodes.release.xcconfig */;
+			baseConfigurationReference = 4FEC4627A90573D7A792E92C /* Pods-barCodes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CSMBE4NXW6;
 				INFOPLIST_FILE = barCodes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NG.com.barCodes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos11.3;
 				SWIFT_OBJC_BRIDGING_HEADER = "barCodes/barCodes-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -431,6 +503,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		044C1C96206EBC950062FDE7 /* ItemModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				044C1C97206EBC950062FDE7 /* ItemNodel.xcdatamodel */,
+			);
+			currentVersion = 044C1C97206EBC950062FDE7 /* ItemNodel.xcdatamodel */;
+			path = ItemModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04E159D12029BC4800AE9D1A /* Project object */;
 }

@@ -11,11 +11,10 @@ import UIKit
 class ItemCell: UITableViewCell {
 
     @IBOutlet weak var titleOfProductLabel: UILabel!
-    @IBOutlet weak var priceTitle: UILabel!
     @IBOutlet weak var centsTitle: UILabel!
     func configureCell(titleOfProduct: String,price: String, cents: String ){
+        var str = price + "." + cents + "p"
         titleOfProductLabel.text = titleOfProduct
-        priceTitle.text = price
-        centsTitle.text = cents
+        centsTitle.text = str
     }
 }

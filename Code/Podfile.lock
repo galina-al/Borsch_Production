@@ -1,0 +1,32 @@
+PODS:
+  - fluid-slider (0.0.6):
+    - pop
+  - M13Checkbox (3.2.2)
+  - pop (1.0.10)
+  - SwiftHTTP (3.0.1)
+  - TableViewReloadAnimation (0.0.5)
+
+DEPENDENCIES:
+  - fluid-slider
+  - M13Checkbox
+  - SwiftHTTP (~> 3.0.1)
+  - TableViewReloadAnimation (~> 0.0.5)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - fluid-slider
+    - M13Checkbox
+    - pop
+    - SwiftHTTP
+    - TableViewReloadAnimation
+
+SPEC CHECKSUMS:
+  fluid-slider: 51151aa6e1bc834e34992163689e33db5cb2044f
+  M13Checkbox: 6f16a53d940cf881cd3607b054cf2c553f9ee3a5
+  pop: 2e49064438d90f0429787015f57077a30e6a4f72
+  SwiftHTTP: c3caf371c23238f081a660ba3bc32edc7b54abd3
+  TableViewReloadAnimation: 90f9686e52cb9fa01f12e4ef7b0b9710e48b91e5
+
+PODFILE CHECKSUM: 942c3eedc532204b36ae13eb35b5b2baec1fcb30
+
+COCOAPODS: 1.5.2

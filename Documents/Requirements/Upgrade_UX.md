@@ -39,3 +39,18 @@
     Мы запланировали улучшения дизайна и дополнительного функционала после 3-го спринта к итоговой презентации.
     
 ### 4. Сравнение "До/После"
+
+**До**
+
+  1. Удаление элементов списка.
+
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Requirements/mistake.gif?raw=true)
+ 
+ ##
+ 
+**После**
+
+  1. Предварительный список покупок
+
+ ![](https://github.com/galina-al/Borsch_Production/blob/master/Documents/Requirements/pre-list.gif?raw=true)
+
